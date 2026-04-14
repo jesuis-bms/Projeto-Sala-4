@@ -3,6 +3,28 @@
   padding: 10px;
 }
 
+.topo h1 {
+  text-align: center;
+}
+
+.salas {
+  text-align: center;
+  font-size: 20px;
+}
+
+#atividades-704 {
+  background-color: #5d7c43;
+  cursor: pointer;
+  padding: 40px;
+}
+
+#atividades-705 {
+  background-color: #5d7c43;
+  cursor: pointer;
+  padding: 40px;
+  margin-left: 50%;
+}
+
 #login {
   position: absolute;
   left: 10px;
@@ -10,18 +32,15 @@
   height: 20px;
 }
 
-.topo h1 {
-  text-align: center;
+body {
+  background-color: #dde9d4;
 }
 
-body{
-  background-color: #dde9d4
-}
-
-a{
+a {
   text-decoration: none;
+  cursor: pointer;
 }
 
-a:hover{
+a:hover {
   color: #79c096;
 }
