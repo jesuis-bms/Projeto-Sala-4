@@ -44,7 +44,7 @@
 }
 
 body {
-  background-color: #dde9d4;
+  background: linear-gradient(to bottom, #dde9d4, #a3d67c, #5d7c43);
 }
 
 a {
@@ -53,6 +53,14 @@ a {
 
 a:hover {
   color: #79c096;
+}
+
+li {
+  list-style: square;
+}
+
+span {
+  color: rgb(127, 202, 192);
 }
 
 li {
