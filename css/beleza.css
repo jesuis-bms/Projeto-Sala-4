@@ -19,6 +19,9 @@
   flex-wrap: wrap;
 }
 
+.navbar {
+}
+
 #atividades-704,
 #atividades-705 {
   background-color: #5d7c43;
@@ -26,13 +29,34 @@
   width: 150px;
   text-align: center;
   cursor: pointer;
+  display: inline-block;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#atividades-704:hover,
+#atividades-705:hover {
+  background-color: #a3d67c;
 }
 
 #login {
+  background-color: #5d7c43;
+  cursor: pointer;
+  display: inline-block;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
   position: absolute;
   left: 10px;
   top: 10px;
   height: 20px;
+}
+
+#login:hover {
+  background-color: #a3d67c;
 }
 
 #agradecimentos {
@@ -53,14 +77,6 @@ a {
 
 a:hover {
   color: #79c096;
-}
-
-li {
-  list-style: square;
-}
-
-span {
-  color: rgb(127, 202, 192);
 }
 
 li {
