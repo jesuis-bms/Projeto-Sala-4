@@ -19,12 +19,19 @@
   flex-wrap: wrap;
 }
 
-.navbar {
+.sumario {
+  display: none;
+  width: 50%;
+  padding: 10px;
+}
+
+.sumario.show {
+  display: block;
 }
 
 #atividades-704,
 #atividades-705 {
-  background-color: #5d7c43;
+  background-color: linear-gradient;
   padding: 20px;
   width: 150px;
   text-align: center;
@@ -35,11 +42,27 @@
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
+  transition: all 0.25s ease;
 }
 
 #atividades-704:hover,
 #atividades-705:hover {
-  background-color: #a3d67c;
+  background: #a3d67c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px #1342029c;
+}
+
+#sumario-btn {
+  background-color: #5d7c43;
+  cursor: pointer;
+  display: inline-block;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 20px;
 }
 
 #login {
