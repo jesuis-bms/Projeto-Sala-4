@@ -29,6 +29,8 @@
   display: block;
 }
 
+#fecharModal-sala4,
+#fecharModal-sala5,
 #atividades-704,
 #atividades-705 {
   background-color: #5d7c43;
@@ -45,6 +47,8 @@
   transition: all 0.25s ease;
 }
 
+#fecharModal-sala4:hover,
+#fecharModal-sala5:hover,
 #atividades-704:hover,
 #atividades-705:hover {
   background: #a3d67c;
@@ -96,6 +100,10 @@ body {
 
 a {
   text-decoration: none;
+}
+
+dialog {
+  background: linear-gradient(to bottom, #dde9d4, #a3d67c, #5d7c43);
 }
 
 a:hover {
