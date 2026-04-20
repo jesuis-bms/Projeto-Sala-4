@@ -46,16 +46,20 @@ def home():
     logado = "usuario" in session
     return render_template("index.html", atividades=atividades, logado=logado)
 
-@app.route("/criar-admin")
-def criar_admin():
+@app.route("/criar-teste")
+def criar_teste():
     conn, cursor = get_db()
-    cursor.execute(
-        "INSERT INTO users (usuario, senha) VALUES (?, ?)",
-        ("Deadlife", "67889")
-    )
-    conn.commit()
+    try:
+        cursor.execute(
+            "INSERT INTO users (usuario, senha) VALUES (?, ?)",
+            ("Deadlife", "67889")
+        )
+        conn.commit()
+        msg = "Usuário teste criado."
+    except Exception as e:
+        msg = f"Erro ao criar: {e}"
     conn.close()
-    return "Usuário criado."
+    return msg
 
 @app.route("/login", methods=["POST"])
 def logar():
