@@ -14,6 +14,13 @@ const abrirLogin = document.getElementById("login");
 const fecharLogin = document.getElementById("fecharlogin-modal");
 const modalLogin = document.getElementById("login-modal");  
 
+const loginModal = document.getElementById("login-modal");
+const erroLogin = document.querySelector(".erro-login");
+
+if (loginModal && erroLogin) {
+  loginModal.showModal();
+}
+
 function setupModal(openBtn, closeBtn, modal) {
   openBtn.addEventListener("click", () => modal.showModal());
   closeBtn.addEventListener("click", () => modal.close());
