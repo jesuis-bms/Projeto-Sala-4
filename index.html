@@ -5,12 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projeto Sala 4</title>
     <link rel="icon" href="img/logo.emdb.ico" />
-    <link rel="stylesheet" href="css/beleza.css" />
+    <link rel="stylesheet" href="{{ url_for('css', filename='beleza.css') }}" />
   </head>
   <body>
     <header>
       <div class="topo">
-        <button id="login">Entre por aqui!</button>
+        <dialog id="login-modal">
+          <form action="/login" method="POST">
+            <label>
+              Usuário:
+              <input type="text" name="user" id="user">
+              Senha:
+              <input type="text" name="senha" id="senha">
+            </label>
+          <button type="submit" id="logar" name="logar">Entrar</button>
+          </form>
+          <button id="fecharlogin-modal">Sair</button>
+        </dialog>
+        {% if logado %}
+          <form action="/logout" method="POST">
+            <button id="logout" type="submit">Sair</button>
+          </form>
+          {% else %}
+          <button id="login">Entre por aqui!</button>
+          {% endif %}
         <h1>Projeto Sala 4</h1>
       </div>
 
@@ -37,13 +55,83 @@
         <h3>Está procurando por atividades? Selecione sua sala abaixo:</h3>
         <div class="atividades">
           <dialog id="modal-sala4">
+
+              <select id="materias-sala4">
+                <option value="matematica">Matemática</option>
+                <option value="portugues">Português</option>
+                <option value="geografia">Geografia</option>
+                <option value="historia">História</option>
+                <option value="ciencias">Ciências</option>
+                <option value="arte">Arte</option>
+                <option value="ingles">Inglês</option>
+                <option value="geometria">Geometria</option>
+              </select>
+
             <p>Ops! Não temos nada aqui ainda...</p>
             <button id="fecharModal-sala4">Fechar</button>
+              
+              {% if logado %}
+              <form action="/enviar" method="POST">
+                <label>
+                  Título
+                  <input type="text" name="titulo">
+                </label>
+
+               <label>
+                  Descrição
+                  <input type="text" name="descricao">
+                </label>
+
+                  <input type="hidden" name="sala" value="704">
+
+                <label>
+                  Matéria
+                  <input type="text" name="materia">
+                </label>
+
+                <button type="submit">Adicionar conteúdo</button>
+              </form>
+            {% endif %}
+
           </dialog>
           <button id="atividades-704">Sala 704</button>
+          
           <dialog id="modal-sala5">
+            <select id="materias-sala5">
+              <option value="matematica">Matemática</option>
+              <option value="portugues">Português</option>
+              <option value="geografia">Geografia</option>
+              <option value="historia">História</option>
+              <option value="ciencias">Ciências</option>
+              <option value="arte">Arte</option>
+              <option value="ingles">Inglê</option>
+              <option value="geometria">Geometria</option>
+            </select>
             <p>Ops! Não temos nada aqui também...</p>
             <button id="fecharModal-sala5">Fechar</button>
+            
+            {% if logado %}
+              <form action="/enviar" method="POST">
+                <label>
+                  Título
+                  <input type="text" name="titulo">
+                </label>
+
+               <label>
+                  Descrição
+                  <input type="text" name="descricao">
+                </label>
+
+                  <input type="hidden" name="sala" value="705">
+
+                <label>
+                  Matéria
+                  <input type="text" name="materia">
+                </label>
+
+                <button type="submit">Adicionar conteúdo</button>
+              </form>
+            {% endif %}
           </dialog>
           <button id="atividades-705">Sala 705</button>
         </div>
@@ -100,6 +188,6 @@
       </p>
       <p>Site desenvolvido por <span>Bernard Luiz Marques da Silva</span>.</p>
     </div>
-    <script src="index.js"></script>
+    <script src="{{ url_for(filename='index.js') }}"></script>
   </body>
 </html>
