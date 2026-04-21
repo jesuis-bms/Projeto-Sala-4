@@ -34,24 +34,12 @@ def create_table():
             """)
         conn.commit()
 
-#def seed_default_user():
-#    with get_db() as conn:
-#        with conn.cursor() as cursor:
-#            cursor.execute(
-#                "SELECT 1 FROM users WHERE usuario = %s",
-#                ("user",)
-#            )
-#            existe = cursor.fetchone()
-#
-#            if not existe:
-#                cursor.execute(
-#                    "INSERT INTO users (usuario, senha) VALUES (%s, %s)",
-#                    ("user", "senha")
-#                )
-#        conn.commit()
-
 create_table()
-#seed_default_user()
+
+def separar_atividades_por_sala(atividades):
+    atividades_704 = [a for a in atividades if a[4] == "704"]
+    atividades_705 = [a for a in atividades if a[4] == "705"]
+    return atividades_704, atividades_705
 
 @app.route("/")
 def home():
@@ -64,8 +52,16 @@ def home():
             """)
             atividades = cursor.fetchall()
 
+    atividades_704, atividades_705 = separar_atividades_por_sala(atividades)
     logado = "usuario" in session
-    return render_template("index.html", atividades=atividades, logado=logado)
+
+    return render_template(
+        "index.html",
+        atividades=atividades,
+        logado=logado,
+        atividades_704=atividades_704,
+        atividades_705=atividades_705
+    )
 
 @app.route("/login", methods=["POST"])
 def logar():
@@ -111,17 +107,20 @@ def filtroSala(sala):
                 SELECT id, titulo, descricao, materia, sala
                 FROM atividades
                 WHERE sala = %s
+                ORDER BY id DESC
             """, (sala,))
             atividades = cursor.fetchall()
 
-    atividades_705 = [a for a in atividades if a[4] == "705"]
-    atividades_704 = [a for a in atividades if a[4] == "704"]
+    atividades_704, atividades_705 = separar_atividades_por_sala(atividades)
     logado = "usuario" in session
-    return render_template("index.html",
-                            atividades=atividades,
-                            logado=logado,
-                            atividades_705=atividades_705,
-                            atividades_704=atividades_704)
+
+    return render_template(
+        "index.html",
+        atividades=atividades,
+        logado=logado,
+        atividades_704=atividades_704,
+        atividades_705=atividades_705
+    )
 
 @app.route("/enviar", methods=["POST"])
 def enviar():
@@ -178,13 +177,14 @@ def delete(id):
     if block():
         return "Acesso negado."
 
+    sala = request.form.get("sala", "").strip()
+
     with get_db() as conn:
         with conn.cursor() as cursor:
             cursor.execute("DELETE FROM atividades WHERE id = %s", (id,))
         conn.commit()
 
-    return redirect(url_for("home"))
+    return redirect(url_for("filtroSala", sala=sala))
 
 if __name__ == "__main__":
     app.run(debug=True)
-
