@@ -35,20 +35,20 @@ def create_table():
         conn.commit()
 
 #def seed_default_user():
- #   with get_db() as conn:
-  #      with conn.cursor() as cursor:
-   #         cursor.execute(
-    #            "SELECT 1 FROM users WHERE usuario = %s",
-     #           ("Daredevil",)
-      #      )
-       #     existe = cursor.fetchone()
+#    with get_db() as conn:
+#        with conn.cursor() as cursor:
+#            cursor.execute(
+#                "SELECT 1 FROM users WHERE usuario = %s",
+#                ("user",)
+#            )
+#            existe = cursor.fetchone()
 #
- #           if not existe:
-  #              cursor.execute(
-   #                 "INSERT INTO users (usuario, senha) VALUES (%s, %s)",
-    #                ("Daredevil", "fiona 'n' cakes")
-     #           )
-      #  conn.commit()
+#            if not existe:
+#                cursor.execute(
+#                    "INSERT INTO users (usuario, senha) VALUES (%s, %s)",
+#                    ("user", "senha")
+#                )
+#        conn.commit()
 
 create_table()
 #seed_default_user()
