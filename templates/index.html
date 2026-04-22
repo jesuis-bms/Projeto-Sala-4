@@ -232,9 +232,11 @@
                     <div class="atividade-info">
                       <h4>{{ atividade[1] }}</h4>
                       {% if atividade[0] in imagens_por_atividade %}
-                        {% for url in imagens_por_atividade[atividade[0]] %}
-                          <img src="{{ url }}">
-                        {% endfor %}
+                        <div class="galeria" data-atividade="{{ atividade[0] }}">
+                          {% for url in imagens_por_atividade[atividade[0]] %}
+                            <img src="{{ url }}" class="galeria-thumb">
+                          {% endfor %}
+                        </div>
                       {% endif %}
                       <p style="white-space: pre-line;">{{ atividade[2] }}</p>
                       <span>{{ atividade[3] }}</span>
