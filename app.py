@@ -1,12 +1,23 @@
 import os
 import time
 import psycopg
+import cloudinary
+import cloudinary.uploader
 from werkzeug.utils import secure_filename
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 
-app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "troque-isso")
 
+app = Flask(__name__)
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "key_pra_localhost"
+)
+
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET")
+)
 DATABASE_URL = os.environ.get(
     "DATABASE_URL",
     "postgresql://postgres:1234@localhost:5432/teste"
@@ -153,7 +164,8 @@ def enviar():
         os.makedirs(upload_folder, exist_ok=True)
 
         caminho = os.path.join(upload_folder, nome_imagem)
-        imagem.save(caminho)
+        resultado = cloudinary.uploader.upload(imagem)
+        nome_imagem = resultado["secure_url"]
 
     with get_db() as conn:
         with conn.cursor() as cursor:
