@@ -49,7 +49,8 @@ def create_table():
                 id SERIAL PRIMARY KEY,
                 atividade_id INTEGER NOT NULL,
                 url TEXT NOT NULL
-            """)
+            )
+        """)
         conn.commit()
 
 create_table()
