@@ -62,14 +62,17 @@ def separar_atividades_por_sala(atividades):
 
 @app.route("/")
 def home():
+    imagens_por_atividade = {}
+
     with get_db() as conn:
         with conn.cursor() as cursor:
-            cursor.execute("""
-                SELECT id, titulo, descricao, materia, sala, imagem
-                FROM atividades
-                ORDER BY id DESC
-            """)
-            atividades = cursor.fetchall()
+            cursor.execute("SELECT atividade_id, url FROM imagens")
+            todas = cursor.fetchall()
+
+            for atividade_id, url in todas:
+                if atividade_id not in imagens_por_atividade:
+                    imagens_por_atividade[atividade_id] = []
+                    imagens_por_atividade[atividade_id].append(url)
 
     atividades_704, atividades_705 = separar_atividades_por_sala(atividades)
     logado = "usuario" in session
@@ -79,7 +82,8 @@ def home():
         atividades=atividades,
         logado=logado,
         atividades_704=atividades_704,
-        atividades_705=atividades_705
+        atividades_705=atividades_705,
+        imagens_por_atividade=imagens_por_atividade
     )
 
 @app.route("/login", methods=["POST"])
