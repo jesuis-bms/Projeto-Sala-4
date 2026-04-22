@@ -108,9 +108,9 @@
 
 .galeria {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 por linha */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 6px;
-  margin: 8px 0;
+  margin-top: 10px;
 }
 
 .galeria img {
@@ -118,6 +118,20 @@
   height: 120px;
   object-fit: cover;
   border-radius: 8px;
+  transition: 0.2s;
+}
+
+.galeria img:hover {
+  transform: scale(1.03);
+}
+
+.atividade-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 #salas {
@@ -226,7 +240,22 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #dde9d4, #a3d67c, #5d7c43);
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+  margin-bottom: 8px;
+}
+
+span {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #666;
 }
 
 a {
@@ -247,8 +276,3 @@ a:hover {
 li {
   list-style: square;
 }
-
-span {
-  color: rgb(127, 202, 192);
-}
-
