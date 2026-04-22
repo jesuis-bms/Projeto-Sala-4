@@ -95,7 +95,7 @@
                           <img src="{{ url }}">
                         {% endfor %}
                       {% endif %}
-                      <p>{{ atividade[2] }}</p>
+                      <p style="white-space: pre-line;">{{ atividade[2] }}</p>
                       <span>{{ atividade[3] }}</span>
                     </div>
 
@@ -228,7 +228,7 @@
                           <img src="{{ url }}">
                         {% endfor %}
                       {% endif %}
-                      <p>{{ atividade[2] }}</p>
+                      <p style="white-space: pre-line;">{{ atividade[2] }}</p>
                       <span>{{ atividade[3] }}</span>
                     </div>
 
@@ -263,7 +263,7 @@
 
                       <label>
                         Descrição
-                        <input type="text" name="descricao" value="{{ atividade[2] }}" />
+                        <textarea name="descricao">{{ atividade[2] }}</textarea>
                       </label>
 
                       <label>
@@ -303,7 +303,7 @@
 
                 <label>
                   Descrição
-                  <input type="text" name="descricao" />
+                  <textarea name="descricao">{{ atividade[2] }}</textarea>
                 </label>
 
                 <input type="hidden" name="sala" value="705" />
