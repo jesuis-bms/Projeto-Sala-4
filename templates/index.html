@@ -92,9 +92,9 @@
                     <div class="atividade-info">
                       <h4>{{ atividade[1] }}</h4>
                       {% if atividade[0] in imagens_por_atividade %}
-                        <div class="galeria">
+                        <div class="galeria" data-atividade="{{ atividade[0] }}">
                           {% for url in imagens_por_atividade[atividade[0]] %}
-                            <img src="{{ url }}">
+                            <img src="{{ url }}" class="galeria-thumb">
                           {% endfor %}
                         </div>
                       {% endif %}
@@ -397,6 +397,11 @@
       <p>Site desenvolvido por <span>Bernard Luiz Marques da Silva</span>.</p>
     </div>
 
+    <dialog id="imagem-modal">
+      <button id="fechar-imagem-modal" type="button">Fechar</button>
+      <div id="imagem-modal-conteudo"></div>
+    </dialog>
+    
     <script src="{{ url_for('static', filename='index.js') }}"></script>
   </body>
 </html>
