@@ -108,8 +108,16 @@
 
 .galeria {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* 2 por linha */
   gap: 6px;
+  margin: 8px 0;
+}
+
+.galeria img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 #salas {
