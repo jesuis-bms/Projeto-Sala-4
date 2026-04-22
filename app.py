@@ -219,15 +219,33 @@ def editar(id):
     novaDescricao = request.form.get("descricao", "").strip()
     novaMateria = request.form.get("materia", "").strip()
     sala = request.form.get("sala", "").strip()
+    imagens = request.files.getlist("imagens")
 
-    with get_db() as conn:
-        with conn.cursor() as cursor:
-            cursor.execute("""
-                UPDATE atividades
-                SET titulo = %s, descricao = %s, materia = %s
-                WHERE id = %s
-            """, (novoTitulo, novaDescricao, novaMateria, id))
-        conn.commit()
+with get_db() as conn:
+    with conn.cursor() as cursor:
+        cursor.execute("""
+            UPDATE atividades
+            SET titulo = %s, descricao = %s, materia = %s
+            WHERE id = %s
+        """, (novoTitulo, novaDescricao, novaMateria, id))
+
+        if imagens and imagens[0].filename:
+            cursor.execute(
+                "DELETE FROM imagens WHERE atividade_id = %s",
+                (id,)
+            )
+
+            for imagem in imagens:
+                if imagem and imagem.filename:
+                    resultado = cloudinary.uploader.upload(imagem)
+                    url = resultado["secure_url"]
+
+                    cursor.execute("""
+                        INSERT INTO imagens (atividade_id, url)
+                        VALUES (%s, %s)
+                    """, (id, url))
+
+    conn.commit()
 
     return redirect(url_for("filtroSala", sala=sala))
 
