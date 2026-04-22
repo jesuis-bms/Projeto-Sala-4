@@ -90,8 +90,10 @@
                   <div class="atividade-topo">
                     <div class="atividade-info">
                       <h4>{{ atividade[1] }}</h4>
-                      {% if atividade[5] %}
-                        <img src="{{ atividade[5] }}" alt="Imagem da atividade">
+                      {% if imagens_por_atividade[atividade[0]] %}
+                        {% for url in imagens_por_atividade[atividade[0]] %}
+                          <img src="{{ url }}">
+                        {% endfor %}
                       {% endif %}
                       <p>{{ atividade[2] }}</p>
                       <span>{{ atividade[3] }}</span>
@@ -221,8 +223,10 @@
                   <div class="atividade-topo">
                     <div class="atividade-info">
                       <h4>{{ atividade[1] }}</h4>
-                      {% if atividade[5] %}
-                        <img src="{{ atividade[5]  }}" alt="Imagem da atividade">
+                      {% if imagens_por_atividade[atividade[0]] %}
+                        {% for url in imagens_por_atividade[atividade[0]] %}
+                          <img src="{{ url }}">
+                        {% endfor %}
                       {% endif %}
                       <p>{{ atividade[2] }}</p>
                       <span>{{ atividade[3] }}</span>
