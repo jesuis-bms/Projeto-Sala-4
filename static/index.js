@@ -105,3 +105,16 @@ function setupModal(openBtn, closeBtn, modal) {
 setupModal(abrirModal4, fecharModal4, modal4);
 setupModal(abrirModal5, fecharModal5, modal5);
 setupModal(abrirLogin, fecharLogin, modalLogin);
+
+const caminho = window.location.pathname;
+
+if (caminho === "/sala/704" && modal4) {
+  modal4.showModal();
+}
+
+if (caminho === "/sala/705" && modal5) {
+  modal5.showModal();
+}
+
+const modal4 = document.getElementById("modal-sala4");
+const modal5 = document.getElementById("modal-sala5");
