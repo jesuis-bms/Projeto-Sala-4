@@ -13,6 +13,11 @@ const abrirModal4 = document.getElementById("atividades-704");
 const fecharModal4 = document.getElementById("fecharModal-sala4");
 const fecharModal5 = document.getElementById("fecharModal-sala5");
 
+const abrirLogin = document.getElementById("login");
+const fecharLogin = document.getElementById("fecharlogin-modal");
+const modalLogin = document.getElementById("login-modal");
+const erroLogin = document.querySelector(".erro-login");
+
 const caminho = window.location.pathname;
 
 if (caminho === "/sala/704" && modal4) {
