@@ -5,8 +5,6 @@ if (sumario && sumarioBtn) {
   sumarioBtn.addEventListener("click", () => sumario.classList.toggle("show"));
 }
 
-const modal4 = document.getElementById("modal-sala4");
-const modal5 = document.getElementById("modal-sala5");
 const abrirModal5 = document.getElementById("atividades-705");
 const abrirModal4 = document.getElementById("atividades-704");
 const fecharModal4 = document.getElementById("fecharModal-sala4");
@@ -16,6 +14,19 @@ const abrirLogin = document.getElementById("login");
 const fecharLogin = document.getElementById("fecharlogin-modal");
 const modalLogin = document.getElementById("login-modal");
 const erroLogin = document.querySelector(".erro-login");
+
+const caminho = window.location.pathname;
+
+if (caminho === "/sala/704" && modal4) {
+  modal4.showModal();
+}
+
+if (caminho === "/sala/705" && modal5) {
+  modal5.showModal();
+}
+
+const modal4 = document.getElementById("modal-sala4");
+const modal5 = document.getElementById("modal-sala5");
 
 document.querySelectorAll(".atividade-card").forEach((card) => {
   const menuBtn = card.querySelector(".menu-btn");
@@ -105,16 +116,3 @@ function setupModal(openBtn, closeBtn, modal) {
 setupModal(abrirModal4, fecharModal4, modal4);
 setupModal(abrirModal5, fecharModal5, modal5);
 setupModal(abrirLogin, fecharLogin, modalLogin);
-
-const caminho = window.location.pathname;
-
-if (caminho === "/sala/704" && modal4) {
-  modal4.showModal();
-}
-
-if (caminho === "/sala/705" && modal5) {
-  modal5.showModal();
-}
-
-const modal4 = document.getElementById("modal-sala4");
-const modal5 = document.getElementById("modal-sala5");
