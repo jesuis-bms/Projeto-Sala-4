@@ -17,6 +17,11 @@ const erroLogin = document.querySelector(".erro-login");
 
 const caminho = window.location.pathname;
 
+const modal4 = document.getElementById("modal-sala4");
+const modal5 = document.getElementById("modal-sala5");
+
+const caminho = window.location.pathname;
+
 if (caminho === "/sala/704" && modal4) {
   modal4.showModal();
 }
@@ -24,9 +29,6 @@ if (caminho === "/sala/704" && modal4) {
 if (caminho === "/sala/705" && modal5) {
   modal5.showModal();
 }
-
-const modal4 = document.getElementById("modal-sala4");
-const modal5 = document.getElementById("modal-sala5");
 
 document.querySelectorAll(".atividade-card").forEach((card) => {
   const menuBtn = card.querySelector(".menu-btn");
