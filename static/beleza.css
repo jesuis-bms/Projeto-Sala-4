@@ -205,6 +205,7 @@
 }
 
 .add-cont:hover,
+#fechar-imagem-modal:hover,
 #logar:hover,
 #fecharlogin-modal:hover,
 #fecharModal-sala4:hover,
@@ -262,10 +263,21 @@
 
 #agradecimentos {
   text-align: center;
-  background-color: Silver;
+  background: linear-gradient(to right, #5d7c43, #a3d67c);
   color: white;
-  max-width: 75%;
-  padding: 5%;
+  padding: 20px;
+  font-size: 14px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+}
+
+#agradecimentos span {
+  color: #dfffd6;
+  font-weight: bold;
+}
+
+#agradecimentos p {
+  margin: 8px 0;
 }
 
 .enviar,
