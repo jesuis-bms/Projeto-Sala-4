@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Acesso à sala {{ sala }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='beleza.css') }}">
+</head>
+<body>
+  <main class="senha-container">
+    <form class="senha-card" method="POST" action="{{ url_for('verificar_sala', sala=sala) }}">
+      <h2>Sala {{ sala }}</h2>
+      <p>Digite a senha para acessar as atividades.</p>
+
+      {% if erro %}
+        <p class="erro-senha">{{ erro }}</p>
+      {% endif %}
+
+      <input type="password" name="senha" placeholder="Senha da sala" required>
+
+      <button type="submit">Entrar</button>
+      <a href="{{ url_for('home') }}">Voltar</a>
+    </form>
+  </main>
+</body>
+</html>
