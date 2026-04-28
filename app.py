@@ -82,7 +82,16 @@ def home():
 
                 imagens_por_atividade[atividade_id].append(url)
 
-    atividades_704, atividades_705 = separar_atividades_por_sala(atividades)
+    if session.get("sala_704"):
+        atividades_704 = [a for a in atividades if a[4] == "704"]
+    else:
+        atividades_704 = []
+
+    if session.get("sala_705"):
+        atividades_705 = [a for a in atividades if a[4] == "705"]
+    else:
+        atividades_705 = []
+
     logado = "usuario" in session
 
     return render_template(
@@ -130,8 +139,41 @@ def logout():
 def block():
     return "usuario" not in session
 
+SENHAS_SALAS = {
+    "704": os.environ.get("SENHA_704"),
+    "705": os.environ.get("SENHA_705")
+}
+
+@app.route("/verificar_sala/<sala>", methods=["POST"])
+def verificar_sala(sala):
+    senha = request.form.get("senha", "").strip()
+    senha_correta = SENHAS_SALAS.get(sala)
+
+    if not senha_correta:
+        return render_template(
+            "senha.html",
+            sala=sala,
+            erro="Senha dessa sala não foi configurada."
+        )
+
+    if senha_correta == senha:
+        session[f"sala_{sala}"] = True
+        return redirect(url_for("filtroSala", sala=sala))
+
+    return render_template(
+        "senha.html",
+        sala=sala,
+        erro="Senha incorreta."
+    )
+
 @app.route("/sala/<sala>")
 def filtroSala(sala):    
+
+    if sala not in SENHAS_SALAS:
+        return "Sala inválida."
+    if not session.get(f"sala_{sala}"):
+        return render_template("senha.html", sala=sala)
+
     imagens_por_atividade = {}
 
     with get_db() as conn:
