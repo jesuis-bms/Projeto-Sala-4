@@ -156,6 +156,37 @@
   cursor: pointer;
 }
 
+.senha-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #a3d67c;
+}
+
+.senha-card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  text-align: center;
+  width: min(90%, 360px);
+}
+
+.senha-card input {
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+}
+
+.senha-card button {
+  background: #5d7c43;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+}
+
 #imagem-modal {
   width: min(90vw, 900px);
   max-height: 85vh;
